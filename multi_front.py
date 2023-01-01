@@ -146,8 +146,8 @@ class hypervol_solver():
 
         dystopia = np.full(dim,np.inf)
         for m in range(dim) :
-            dystopia[m] = np.max(miu[:,m]) #CHANGED MIU TO Y_VEC #XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-        return dystopia #DO I NEED TO MAKE A COPY OF Y_VEC?
+            dystopia[m] = np.max(miu[:,m])
+        return dystopia 
     
     def hypervol (self):
         reference_point = self.init_dystopia()  #ref point is the worse x,y,(z) of all miu 
@@ -182,10 +182,8 @@ class hypervol_solver():
                 
                 self.front_size -= 1
             
-            #with_edges = np.append(without_edges, edgs, axis=0)
             
             fin_vol = self.compute_hypervol(without_edges, reference_point, 3, 1, zn, 0)
-            #def compute_hypervol(self, given_ps, ref_p, dim, vol, scan_z):
             print("final vol is: ", fin_vol)
             
            
@@ -378,11 +376,10 @@ upgraded_x = np.append(first_front_x, maxpts, axis=0)
 
 # solver = hypervol_solver(funcs)             # MIU = 20 , ITER = 50 , given_x = 0
 # solver = hypervol_solver(funcs, upgraded_x) # MIU = 14 , ITER = 25, given_x = upgraded_x 
-#solver = hypervol_solver(funcs)               # MIU = 13 , ITER = 25, given_x = 0 
+# solver = hypervol_solver(funcs)               # MIU = 13 , ITER = 25, given_x = 0 
 solver = hypervol_solver(funcs)               # MIU = 13 , ITER = 50, given_x = 0 
 
 front = solver.solve()
 
 print(front[1][np.argmin(np.linalg.norm(front[1], axis=1))])
-# print(front)
 x = front[0][np.argmin(np.linalg.norm(front[1], axis=1))]#
