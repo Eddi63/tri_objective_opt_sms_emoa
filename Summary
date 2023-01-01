@@ -1,0 +1,35 @@
+First Run:
+	First run uses MIU 20 , ITER 50 , with random initiated points.
+	Runtime is forever- about two days. 
+	Anytime hypervol receives more than 50 points, runtime is too long.
+	Pretty satisfactory outcome. Front and graphs attached.
+	
+Second Run:
+	Second run uses MIU 14, ITER 25, with FIRST RUNS outcome and optimal point
+	for each objective accumulated, as input for initial points.
+	Runtime improved, about 2 hrs
+	Outcome- perhaps because used first outcome as initial input, dont really
+	see a drastic change from beginning to end. Because used each objectives minimum
+	as input, and perhaps due to a smaller population, less smooth curve.
+	
+Third Run:
+	Third rin uses MIU 13, ITER 25, with random initiated x's.
+	Runtime improved, less than 30 minutes.
+	Outcome- not at all as good as the first, but pretty good considering its
+	half the iterations and a portion of the population.
+	
+Fourth Run:
+	Fourth run is like 3rd, MIU 13, but with ITER 50, with random initiated x's.
+	Runtime around two hours.
+	Outcome improved from third run but not nearly as satisfactory as first
+	run.
+	
+Issues:
+	Runtime. the hypervol def is not good for 50+ points. Need a more efficient
+	algorithm.
+	Stop condition. Stop based on chosen iter_counter, perhaps should be chosen
+	based on improvement of hypervolume but doesnt seem consistent. Perhaps as
+	improvement of average of each points hypervolume contribution.
+	Ideal for each objective. If not given initially, does not reach ideal point
+	for each objective, and when given initially, does not seem to reach a rounded
+	front, perhaps because MIU is too small.
