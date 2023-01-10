@@ -1,8 +1,8 @@
 First Run:
 	First run uses MIU 20 , ITER 50 , with random initiated points.
-	Runtime is forever- about two days. 
+	Runtime ~ two days. 
 	Anytime hypervol receives more than 50 points, runtime is too long.
-	Pretty satisfactory outcome. Front and graphs attached.
+	Final outcome pretty satisfactory . Front and graphs attached.
 	
 Second Run:
 	Second run uses MIU 14, ITER 25, with FIRST RUNS outcome and optimal point
@@ -13,9 +13,9 @@ Second Run:
 	as input, and perhaps due to a smaller population, less smooth curve.
 	
 Third Run:
-	Third rin uses MIU 13, ITER 25, with random initiated x's.
+	Third run uses MIU 13, ITER 25, with random initiated x's.
 	Runtime improved, less than 30 minutes.
-	Outcome- not at all as good as the first, but pretty good considering its
+	Outcome- not at all as good as the first, but fairly good considering it's
 	half the iterations and a portion of the population.
 	
 Fourth Run:
