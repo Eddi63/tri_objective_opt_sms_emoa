@@ -45,15 +45,15 @@ class hypervol_solver():
         self.vols = []
         vol = 0
         if self.front_size > MIU_SIZE:
-            vol = self.hypervol() #0 will be counted twice in this case
+            vol = self.hypervol()
             self.vols.append(vol) 
-        while(self.counter < ITER_COUNT): # (diff > EPS) and  #stop conditions TODO change 
+        while(self.counter < ITER_COUNT):
             print("ITERCOUNT: ", self.counter)
             self.counter += 1
             self.iterate()
-            vol_n = self.hypervol() #remove least contributors
+            vol_n = self.hypervol()     #remove least contributors
             self.vols.append(vol_n)
-            diff = vol_n - vol  #add new point, must remain undominated set
+            diff = vol_n - vol          #add new point, must remain undominated set
             
             vol = vol_n 
         return self.front
@@ -84,7 +84,6 @@ class hypervol_solver():
         return is_efficient
         
     def iterate(self): 
-        #while self.front[0].shape[0] < 100 :
         for pair in list (itr.combinations(self.front[0], 2)) : #to prevent population extinction 
             self.front[0] = np.append(self.front[0], self.recombine(pair[0],pair[1]).reshape(1,DIM), axis=0)
 
@@ -96,7 +95,7 @@ class hypervol_solver():
 
     def recombine(self, p1,p2): 
         offset = np.random.randint(1,p1.shape[0])
-        mut = np.random.randint(0,p1.shape[0]) #maybe make this less now!
+        mut = np.random.randint(0,p1.shape[0]) 
 
         new_p = np.concatenate((p1[:offset],p2[offset:]),axis=0)
         new_p[mut] = np.random.normal(np.mean(p1), 0.2)
@@ -142,7 +141,7 @@ class hypervol_solver():
     
     def init_dystopia(self) : #any dimensional
         miu = np.copy(self.front[1])
-        dim = len(self.funcs) # miu[0].shape[0]  #WHY NOT JUST 
+        dim = len(self.funcs) 
 
         dystopia = np.full(dim,np.inf)
         for m in range(dim) :
@@ -153,7 +152,7 @@ class hypervol_solver():
         reference_point = self.init_dystopia()  #ref point is the worse x,y,(z) of all miu 
         reference_point = reference_point.reshape(1, reference_point.shape[0])
         
-        dim = reference_point.shape[1]#volume to be filled 
+        dim = reference_point.shape[1]      #volume to be filled 
         zn = [np.inf] * dim
         
         without_edges, edgs = self.remove_edges(self.front[1])
@@ -188,16 +187,14 @@ class hypervol_solver():
             
            
            
-        fig = plt.figure()#figsize = (36, 27))
+        fig = plt.figure()
         ax1 = fig.add_subplot(111, projection='3d')  
     
         ax1.plot_surface(np.array([self.front[1][:,0], self.front[1][:,1]]), np.array([self.front[1][:,0], self.front[1][:,2]]), \
                          np.array([self.front[1][:,1], self.front[1][:,2]]), cmap=cm.coolwarm)
-    #ax1.scatter(self.front[1][:,0], self.front[1][:,1], self.front[1][:,2], color = 'green')
         ax1.scatter(reference_point[0,0], reference_point[0,1], reference_point[0,2], color = 'red')
         titl = "Iteration: " + str(self.counter)
         plt.title(titl)
-        #plt.pause(1)
         plt.show()
         
         
