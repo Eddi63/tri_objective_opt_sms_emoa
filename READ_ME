@@ -1,7 +1,7 @@
 Course: Workshop on Operations Research and Optimization Methods
 
 Objective:
-Given the tri-objective optimization problem  solve this problem 
+Solve the tri-objective optimization problem
 at dimension n = 30 using the SMS-EMOA (as a black-box problem).
 Provide 3D plots (scatter + surfaces) for the Pareto surfaces obtained 
 when run no longer than 30min.
