@@ -3,6 +3,7 @@ Course: Workshop on Operations Research and Optimization Methods
 Objective:
 Solve the tri-objective optimization problem
 at dimension n = 30 using the SMS-EMOA (as a black-box problem).
+Computing hypervolume of a multidimensional surface
 Provide 3D plots (scatter + surfaces) for the Pareto surfaces obtained 
 when run no longer than 30min.
 
