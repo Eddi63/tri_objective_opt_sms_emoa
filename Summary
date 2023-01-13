@@ -25,8 +25,7 @@ Fourth Run:
 	run.
 	
 Issues:
-	Runtime. the hypervol def is not good for 50+ points. Need a more efficient
-	algorithm.
+	Runtime. the hypervol def is not good for 50+ points. 
 	Stop condition. Stop based on chosen iter_counter, perhaps should be chosen
 	based on improvement of hypervolume but doesnt seem consistent. Perhaps as
 	improvement of average of each points hypervolume contribution.
